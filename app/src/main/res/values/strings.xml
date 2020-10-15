@@ -8,4 +8,5 @@
     <string name="recovered">Recovered</string>
     <string name="active">Active</string>
     <string name="confirmed">Confirmed</string>
+    <string name="date_time_format">dd MMM, HH:mm aaa</string>
 </resources>

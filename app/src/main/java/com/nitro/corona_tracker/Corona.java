@@ -7,13 +7,19 @@ public class Corona {
     private String cured;
     private String deceased;
     private String state;
+    private String new_cured;
+    private String new_death;
+    private String new_active;
 
-    public Corona(String state,String positive, String active, String cured, String deceased) {
+    public Corona(String state,String positive, String active, String cured, String deceased,String new_active,String new_cured,String new_death) {
         this.state=state;
         this.active = active;
         this.positive = positive;
         this.cured = cured;
         this.deceased = deceased;
+        this.new_active=new_active;
+        this.new_cured=new_cured;
+        this.new_death=new_death;
     }
 
     public String getCured() {
@@ -54,5 +60,29 @@ public class Corona {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getNew_cured() {
+        return new_cured;
+    }
+
+    public void setNew_cured(String new_cured) {
+        this.new_cured = new_cured;
+    }
+
+    public String getNew_death() {
+        return new_death;
+    }
+
+    public void setNew_death(String new_death) {
+        this.new_death = new_death;
+    }
+
+    public String getNew_active() {
+        return new_active;
+    }
+
+    public void setNew_active(String new_active) {
+        this.new_active = new_active;
     }
 }

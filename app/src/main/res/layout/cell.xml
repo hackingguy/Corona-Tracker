@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginStart="4dp"
+    android:background="@drawable/listview_item_background"
+    android:layout_margin="2dp"
+    android:gravity="center"
+    android:paddingTop="6dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="↑"
+        android:textColor="#ff0000"
+        android:gravity="center"
+        android:textSize="8sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="6dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Demo Text"
+        android:textColor="#6c757d"
+        />
+</LinearLayout>
+
+
+<!--
+<TextView
+android:id="@+id/confirmed"
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:layout_marginStart="4dp"
+android:background="@drawable/listview_item_background"
+android:gravity="center"
+android:padding="6dp"
+android:text="Demo Text"
+android:textFontWeight="900"
+android:textColor="#6c757d" />
+<TextView
+        android:id="@+id/active"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/listview_item_background"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="Demo Text"
+        android:textFontWeight="900"
+        android:textColor="#6c757d" />
+
+    <TextView
+        android:id="@+id/cured"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/listview_item_background"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="Demo Text"
+        android:textFontWeight="900"
+        android:textColor="#6c757d" />
+
+    <TextView
+        android:id="@+id/deceased"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/listview_item_background"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="Demo Text"
+        android:textFontWeight="900"
+        android:textColor="#6c757d" />
+-->
