@@ -5,6 +5,7 @@ import android.util.Log;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -16,15 +17,23 @@ import okhttp3.Response;
 class GetCurrentData {
 
     private static final String TAG = "GET_CURRENT_DATA";
+    private String url;
+    private int n;
+    private HashMap<Integer, String> map = new HashMap<>();
 
-    GetCurrentData() {
+    GetCurrentData(String... url) {
+        n = url.length;
+        for (int i = 0; i < url.length; i++) {
+            this.url = url[i];
+            getData(i);
+        }
     }
 
 
-    void getData() {
+    void getData(final int index) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://www.mohfw.gov.in/data/datanew.json")
+                .url(url)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -38,12 +47,21 @@ class GetCurrentData {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     String res = Objects.requireNonNull(response.body()).string();
-                    gotData(res);
+                    gotSingleData(index, res);
                 }
             }
         });
     }
 
-    void gotData(String res) {
+    private void gotSingleData(int i, String res) {
+        map.put(i, res);
+        if (map.size() == n) {
+            gotData(map);
+        }
     }
+
+    void gotData(HashMap<Integer, String> map) {
+
+    }
+
 }

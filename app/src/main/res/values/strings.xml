@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">Corona Tracker</string>
-    <string name="confirmed_demo">000000</string>
-    <string name="active_demo">000000</string>
-    <string name="recovered_demo">000000</string>
-    <string name="deceased_demo">000000</string>
+    <string name="confirmed_demo">-</string>
+    <string name="active_demo">-</string>
+    <string name="recovered_demo">-</string>
+    <string name="deceased_demo">-</string>
     <string name="deceased">Deceased</string>
     <string name="recovered">Recovered</string>
     <string name="active">Active</string>
     <string name="confirmed">Confirmed</string>
     <string name="date_time_format">dd MMM, HH:mm aaa</string>
+    <string name="title">COVID19 Tracker</string>
+    <string name="search_title">Search your district or state</string>
+    <string name="date_time">No Update Yet</string>
+    <string name="action_bar_state">State\\UT</string>
+    <string name="action_bar_c">C</string>
+    <string name="action_bar_a">A</string>
+    <string name="action_bar_r">R</string>
+    <string name="action_bar_d">D</string>
 </resources>

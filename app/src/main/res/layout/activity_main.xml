@@ -15,7 +15,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/archia"
         android:gravity="center_horizontal"
-        android:text="COVID19 Tracker"
+        android:text="@string/title"
         android:textColor="#0000ff"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/archia"
             android:gravity="center"
-            android:text="Search your district or state"
+            android:text="@string/search_title"
             android:textColor="#6c757d"
             android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/archia"
             android:gravity="center"
-            android:text="Date Time"
+            android:text="@string/date_time"
             android:textColor="#6c757d"
             android:textStyle="bold" />
     </LinearLayout>
@@ -256,7 +256,7 @@
             android:background="@drawable/listview_item_background"
             android:fontFamily="@font/archia"
             android:padding="8dp"
-            android:text="State\\UT"
+            android:text="@string/action_bar_state"
             android:textColor="#6c757d"
             android:textStyle="bold" />
 
@@ -269,7 +269,7 @@
             android:background="@drawable/listview_item_background"
             android:gravity="center"
             android:padding="6dp"
-            android:text="C"
+            android:text="@string/action_bar_c"
             android:textColor="#ff0000"
             android:textStyle="bold" />
 
@@ -282,7 +282,7 @@
             android:background="@drawable/listview_item_background"
             android:gravity="center"
             android:padding="6dp"
-            android:text="A"
+            android:text="@string/action_bar_a"
             android:textColor="#0000ff"
             android:textStyle="bold" />
 
@@ -295,7 +295,7 @@
             android:background="@drawable/listview_item_background"
             android:gravity="center"
             android:padding="6dp"
-            android:text="R"
+            android:text="@string/action_bar_r"
             android:textColor="#28A744"
             android:textStyle="bold" />
 
@@ -309,12 +309,16 @@
             android:background="@drawable/listview_item_background"
             android:gravity="center"
             android:padding="6dp"
-            android:text="D"
+            android:text="@string/action_bar_d"
             android:textColor="#6c757d"
             android:textStyle="bold" />
 
     </LinearLayout>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <!-- State Cases -->
     <ListView
         android:id="@+id/data"
@@ -325,4 +329,5 @@
         android:paddingTop="2dp"
         android:scrollbars="none" />
 
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>
