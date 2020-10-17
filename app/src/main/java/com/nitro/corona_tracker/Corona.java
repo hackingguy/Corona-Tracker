@@ -11,6 +11,17 @@ public class Corona {
     private String new_death;
     private String new_active;
 
+    public Corona(String district,String positive, String active, String cured, String deceased) {
+        this.state=district;
+        this.active = active;
+        this.positive = positive;
+        this.cured = cured;
+        this.deceased = deceased;
+        this.new_active="0";
+        this.new_cured="0";
+        this.new_death="0";
+    }
+
     public Corona(String state,String positive, String active, String cured, String deceased,String new_active,String new_cured,String new_death) {
         this.state=state;
         this.active = active;

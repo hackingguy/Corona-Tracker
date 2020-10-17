@@ -1,6 +1,5 @@
 package com.nitro.corona_tracker;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -31,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     MaterialCardView confirmed_card, active_card, deceased_card, recovered_card;
-    TextView confirmed, active, deceased, recovered;
+    TextView confirmed, active, deceased, recovered, new_confirmed, new_recovered, new_deceased;
     SharedPreferences sharedPreferences;
     SwipeRefreshLayout mSwipeRefreshLayout;
-    Long currentTime,oldTime;
+    Long currentTime, oldTime;
     String state_url, district_url, change_data;
     ListView data_list;
     Corona total_details;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         recovered_card = findViewById(R.id.deceased_card);
         data_list = findViewById(R.id.data);
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh);
-        sharedPreferences = MainActivity.this.getSharedPreferences("Corona_data", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("Corona_data", Context.MODE_PRIVATE);
         state_url = "https://api.covid19india.org/data.json";
         change_data = "https://api.covid19india.org/states_daily.json";
         district_url = "https://api.covid19india.org/state_district_wise.json";
@@ -60,7 +59,11 @@ public class MainActivity extends AppCompatActivity {
         active = findViewById(R.id.active_cases);
         deceased = findViewById(R.id.deceased_cases);
         recovered = findViewById(R.id.recovered_cases);
-        oldTime = Long.parseLong(sharedPreferences.getString("updated_time","0"));
+        new_confirmed = findViewById(R.id.total_new_confirmed);
+        new_recovered = findViewById(R.id.total_new_recovered);
+        new_deceased = findViewById(R.id.total_new_deceased);
+
+        oldTime = Long.parseLong(sharedPreferences.getString("updated_time", "0"));
         currentTime = System.currentTimeMillis();
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //If Internet And Updated More Than 3 hrs Ago
-        if (internetAvailable() && (currentTime-oldTime==0 || currentTime-oldTime>10800000)) {
+        if (internetAvailable() && (currentTime - oldTime == 0 || currentTime - oldTime > 10800000)) {
             updateData();
         }
         //Get Data From Shared Preferences
@@ -95,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
                         editor.putString("state_data", map.get(0));
                         editor.putString("district_data", map.get(1));
                         editor.putString("change_data", map.get(2));
-                        editor.putString("updated_time",Long.toString(System.currentTimeMillis()));
-                        editor.putString("last_updated_show_time",date);
+                        editor.putString("updated_time", Long.toString(System.currentTimeMillis()));
+                        editor.putString("last_updated_show_time", date);
                         editor.apply();
                         getAndSetDataFromSharedPreferences();
                     }
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getAndSetDataFromSharedPreferences() {
+
         final String state_data = sharedPreferences.getString("state_data", "");
         final String change_data = sharedPreferences.getString("change_data", "");
 
@@ -114,11 +118,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Internet Not Found", Toast.LENGTH_SHORT).show();
         } else {
             //Do Transactions In Background, Don't Stress Main Activity
-            ((TextView) findViewById(R.id.date_time)).setText("Last Updated On " + sharedPreferences.getString("last_updated_show_time",""));
+            ((TextView) findViewById(R.id.date_time)).setText("Last Updated On " + sharedPreferences.getString("last_updated_show_time", ""));
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
+
                         final ArrayList<Corona> cases = new ArrayList<>();
                         JSONObject state = new JSONObject(state_data);
                         JSONObject change = new JSONObject(change_data);
@@ -127,19 +132,19 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject change_confirmed = arr_1.getJSONObject(arr_1.length() - 3);
                         JSONObject change_recovered = arr_1.getJSONObject(arr_1.length() - 2);
                         JSONObject change_deceased = arr_1.getJSONObject(arr_1.length() - 1);
-                        for (int i = 0; i < arr.length() - 1; i++) {
+                        for (int i = 0; i < arr.length() - 2; i++) {
                             JSONObject current = arr.getJSONObject(i);
                             try {
                                 String state_code = current.getString("statecode");
                                 cases.add(new Corona(current.getString("state"), current.getString("confirmed"), current.getString("active"),
                                         current.getString("recovered"), current.getString("deaths"),
-                                        "↑" + change_confirmed.getString(state_code.toLowerCase()), "↑" + change_recovered.getString(state_code.toLowerCase()),
-                                        "↑" + change_deceased.getString(state_code.toLowerCase())));
+                                        change_confirmed.getString(state_code.toLowerCase()), change_recovered.getString(state_code.toLowerCase()),
+                                         change_deceased.getString(state_code.toLowerCase())));
                             } catch (JSONException e) {
                                 cases.add(new Corona(current.getString("state"), current.getString("confirmed"), current.getString("active"),
                                         current.getString("recovered"), current.getString("deaths"),
-                                        "↑0", "↑0",
-                                        "↑0"));
+                                        "0", "0",
+                                        "0"));
                             }
                         }
                         runOnUiThread(new Runnable() {
@@ -151,19 +156,23 @@ public class MainActivity extends AppCompatActivity {
                                 active.setText(formatNumber(total_details.getActive()));
                                 recovered.setText(formatNumber(total_details.getCured()));
                                 deceased.setText(formatNumber(total_details.getDeceased()));
+                                new_confirmed.setText("+" + formatNumber(total_details.getNew_active()));
+                                new_recovered.setText("+" + formatNumber(total_details.getNew_cured()));
+                                new_deceased.setText("+" + formatNumber(total_details.getNew_death()));
 
                                 //State And Data ListViews
-                                CoronaAdapter coronaAdapter = new CoronaAdapter(MainActivity.this, cases);
+                                CoronaStateAdapter coronaAdapter = new CoronaStateAdapter(MainActivity.this, cases);
                                 data_list.setAdapter(coronaAdapter);
                             }
                         });
-                    }
-                    catch (JSONException e){
+                    } catch (JSONException e) {
                         Toast.makeText(MainActivity.this, "Data Error!", Toast.LENGTH_SHORT).show();
                     }
-                };
+                }
+
+                ;
             }).start();
-    }
+        }
     }
 
 

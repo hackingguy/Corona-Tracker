@@ -11,7 +11,7 @@
         android:id="@+id/state_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Maharashtra"
+        android:text="@string/demo_state"
         android:textStyle="bold"
         android:textSize="30sp"
         android:fontFamily="@font/archia"
@@ -35,7 +35,7 @@
             android:id="@+id/confirmed_card"
             style="@style/CardView.Light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginEnd="4dp"
             android:layout_weight="0.25"
             app:cardBackgroundColor="#34FFFFFF"
@@ -47,27 +47,39 @@
                 android:id="@+id/confirm_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:weightSum="3">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/archia"
+                    android:gravity="center"
                     android:text="@string/confirmed"
                     android:textColor="#ff0000"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/total_new_confirmed_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="#A9FF0000"
+                    android:text="+0" />
+
+                <TextView
                     android:id="@+id/state_confirmed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/archia"
-                    android:text="@string/confirmed_demo"
+                    android:gravity="center"
+                    android:text="@string/demo_text"
                     android:textColor="#ff0000"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -77,7 +89,7 @@
             android:id="@+id/active_card"
             style="@style/CardView.Light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginEnd="4dp"
             android:layout_weight="0.25"
             app:cardBackgroundColor="#34FFFFFF"
@@ -88,27 +100,35 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:weightSum="3">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/archia"
+                    android:gravity="center"
                     android:text="@string/active"
                     android:textColor="#0000ff"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
                     android:id="@+id/state_active"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/archia"
-                    android:text="@string/active_demo"
+                    android:gravity="center"
+                    android:text="@string/demo_text"
                     android:textColor="#0000ff"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -118,7 +138,7 @@
             android:id="@+id/recovered_card"
             style="@style/CardView.Light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginEnd="4dp"
             android:layout_weight="0.25"
             app:cardBackgroundColor="#34FFFFFF"
@@ -129,37 +149,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:weightSum="3"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/archia"
                     android:text="@string/recovered"
-                    android:textColor="#28A744"
+                    android:gravity="center"
+                    android:textColor="#28a745"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/total_new_recovered_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textColor="#A828A745"
+                    android:gravity="center"
+                    android:text="+0" />
+
+                <TextView
                     android:id="@+id/state_recovered"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:fontFamily="@font/archia"
-                    android:text="@string/recovered_demo"
-                    android:textColor="#28A744"
+                    android:text="@string/demo_text"
+                    android:textColor="#28a745"
                     android:textSize="20sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/deceased_card"
             style="@style/CardView.Light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
             android:layout_weight="0.25"
             app:cardBackgroundColor="#34FFFFFF"
             app:cardCornerRadius="10dp"
@@ -169,33 +201,136 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:weightSum="3"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
-
                     android:fontFamily="@font/archia"
                     android:text="@string/deceased"
-                    android:textColor="#6C757D"
+                    android:gravity="center"
+                    android:textColor="#6c757d"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/total_new_deceased_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="#A86C757D"
+                    android:text="+0" />
+
+                <TextView
                     android:id="@+id/state_deceased"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:fontFamily="@font/archia"
-                    android:text="@string/deceased_demo"
-                    android:textColor="#6C757D"
+                    android:text="@string/demo_text"
+                    android:textColor="#6c757d"
                     android:textSize="20sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="2"
+            android:background="@drawable/listview_item_background"
+            android:fontFamily="@font/archia"
+            android:padding="8dp"
+            android:text="District"
+            android:textColor="#6c757d"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/confirmed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_background"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/action_bar_c"
+            android:textColor="#ff0000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/active"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_background"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/action_bar_a"
+            android:textColor="#0000ff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cured"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_background"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/action_bar_r"
+            android:textColor="#28A744"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deceased"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_background"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="@string/action_bar_d"
+            android:textColor="#6c757d"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!-- District Cases -->
+        <ListView
+            android:id="@+id/district_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5sp"
+            android:paddingTop="2dp"
+            android:scrollbars="none" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
